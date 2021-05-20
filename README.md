@@ -125,6 +125,8 @@ Isso facilitará na hora de importar esses arquivos, pois será assim:
     import { Usuario, Produto, Regiao } from './models/index';
 ```
 
+Nos casos que é necessário importar módulos que estão dentro da mesma pasta, ou seja um ```model``` dentro de outro ```model```, é necessário importar direto aquele determinado ```model``` e não o ```index```, porque senão terá que seguir o padrão de ordenação dentro do barrel e caso ele esteja desordenado, resultará em um erro de ```runtime```
+
 # Programação Defensiva
 
 ## Javascript | Typescript
