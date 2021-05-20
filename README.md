@@ -8,21 +8,21 @@
 - ## Javascript | Typescript
 
   - ```new Date()``` Precisa ter um cuidado com o Date pois se passado da forma errada para o usuário, tanto mostrando quanto requisitando, o usuário conseguirá    modificá-lo caso seja passado para ele uma referência do Date em questão, para criar uma programação defensiva para esse objeto, é necessário passar uma cópia do objeto, assim caso o usuário consiga editar essa Data, ele não estará alterando a data principal e sim a cópia, em javascript | typescript é feita assim:
-    - Quando requisitar uma data, envolvê la em um:
+    Quando requisitar uma data, envolvê la em um:
     ````js
       new Date(data recebida)
     ````
-    - No construtor quando recebe uma data, é necessário envolver essa data para garantir que o objeto ```Date``` recebido não venha já alterado;
+    No construtor quando recebe uma data, é necessário envolver essa data para garantir que o objeto ```Date``` recebido não venha já alterado;
     ````js
       new Date(data recebida pelo construtor)
     ````
 
   - ```.length()``` = Essa propriedade de um array pode abrir uma brecha para a exclusão desse array, caso o usuário passe
-     - Retorna o tamanho do array:
+    Retorna o tamanho do array:
     ````js
       array.length
     ````
-    - Zera todo o array, colocando o tamanho do mesmo para 0:
+    Zera todo o array, colocando o tamanho do mesmo para 0:
     ````js
       array.length = 0
     ````
