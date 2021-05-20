@@ -106,6 +106,31 @@ Exemplo:
 <br>
 <br>
 
+## Barrels
+É possivel facilitar as importações no Javascript | Typescrypt com o padrão Barrel, onde neste você criará um arquivo index dentro de uma determinada pasta centralizando os arquivos contidos nela, ou seja, se na pasta ```models``` tem os modelos do ```usuario```, ```produto``` e ```regiao```.
+
+Normalmete é importado assim:
+
+```ts
+    import { Usuario } from './models/usuario';
+    import { Produto } from './models/produto';
+    import { Regiao } from './models/regiao';
+```
+
+Pode ser adicionado um arquivo chamado ```index``` (extensão da linguagem, ou seja, .js ou .ts) na raiz da pasta ```models``` e exportar esses arquivos ali. Exemplo:
+
+```ts
+    export * from './usuario';
+    export * from './produto';
+    export * from './regiao';
+```
+
+Isso facilitará na hora de importar esses arquivos, pois será assim:
+
+```ts
+    import { Usuario, Produto, Regiao } from './models/index';
+```
+
 # Programação Defensiva
 
 ## Javascript | Typescript
