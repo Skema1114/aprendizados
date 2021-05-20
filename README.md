@@ -1,8 +1,8 @@
 # Javascript | Typescript
 
-````Decorator```` Um Decorator é um tipo especial de declaração que pode ser anexado a uma declaração de classe, método, acessador, propriedade ou parâmetro para os mais diversos fins. Como o de carregar um elemento do Doom apenas quando o usuario necessitar desse elemento, conhecido como ````Lazyload````:
+````Decorator```` Um Decorator é um tipo especial de declaração que pode ser anexado a uma declaração de classe, método, acessador, propriedade ou parâmetro para os mais diversos fins:
 
-  - ````Throttle```` Padrão de projeto que limita a quantidade de requisições realizadas, fazendo com que a cada vez que o usuário pressionar o botão, essa requisição demore meio segundo (ou outro tempo determinado) para ser enviada e caso o usuário pressione 2 vezes seguidas, a requisição reseta a contagem e começa a valer a partir da última vez que foi pressionada, assim faz com que o usuário não fique metralhando requisições;
+  - ````Deorator | Throttle```` Padrão de projeto que limita a quantidade de requisições realizadas, fazendo com que a cada vez que o usuário pressionar o botão, essa requisição demore meio segundo (ou outro tempo determinado) para ser enviada e caso o usuário pressione 2 vezes seguidas, a requisição reseta a contagem e começa a valer a partir da última vez que foi pressionada, assim faz com que o usuário não fique metralhando requisições;
 
     Exemplo de ````decorator```` no padrão ````throttle```` que é feito para uma requisição de cadastro que não tem retorno, e nessa é mandado um ````event```` que faz com que a página não se recarregue (para aplicações padrão ````single page````);
 
@@ -28,7 +28,17 @@
     ````
   
   - ```Decorator de método``` Um decorator que executa algo antes e depois da chamada de um método:
-  Exemplo de um ```decorator``` que retorna o tempo demorado para executar uma função:
+    Ele é chamado:
+  
+    ````ts
+      @tempoExecucao();
+      minhaFuncao() {
+          //função
+      }
+    ````
+  
+    Exemplo de um ```decorator``` que retorna o tempo demorado para executar uma função:
+    
     ````ts
       export function tempoExecucao() {
           return function(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
@@ -51,6 +61,37 @@
           }
       }
     ````
+    
+   - ```Decorator | Doom Inject``` Um decorator que verifica se o elemento ja foi buscado, se não foi ele busca e faz isso apenas uma vez quando o elemento é requisitado, conhecido como ```LazyLoad```:
+       Ele é chamado:
+  
+        ````ts
+          @doomInject("#data");
+          private _inputData: JQuery;
+        ````
+      Exemplo:
+   
+      ````ts
+        export function doomInject(seletor: string) {
+            return function(target: any, key: string) {
+                let elemento: JQuery;
+
+                const getter = function() {
+                    if (!elemento) {
+                        console.log(`Buscando ${seletor} para injetar em ${key}`);
+                        elemento = $(seletor);
+                    }
+
+                    return elemento;
+                }
+
+                Object.defineProperty(target, key, {
+                    get: getter
+                });
+
+            }
+        }
+      ````
 
 # Programação Defensiva
 
