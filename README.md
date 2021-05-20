@@ -1,13 +1,62 @@
 # Javascript | Typescript
 
-```Throttle``` Padrão que limita a quantidade de requisições realizadas, fazendo com que a cada vez que o usuário pressionar o botão, essa requisição demore meio segundo (ou outro tempo determinado) para ser enviada e caso o usuário pressione 2 vezes seguidas, a requisição reseta a contagem e começa a valer a partir da última vez que foi pressionada, assim faz com que o usuário não fique metralhando requisições;
+````Decorator```` Um Decorator é um tipo especial de declaração que pode ser anexado a uma declaração de classe, método, acessador, propriedade ou parâmetro para os mais diversos fins. Como o de carregar um elemento do Doom apenas quando o usuario necessitar desse elemento, conhecido como ````Lazyload`````:
 
+  - ````Throttle```` Padrão de projeto que limita a quantidade de requisições realizadas, fazendo com que a cada vez que o usuário pressionar o botão, essa requisição demore meio segundo (ou outro tempo determinado) para ser enviada e caso o usuário pressione 2 vezes seguidas, a requisição reseta a contagem e começa a valer a partir da última vez que foi pressionada, assim faz com que o usuário não fique metralhando requisições;
+
+    Exemplo de ````decorator```` no padrão ````throttle```` que é feito para uma requisição de cadastro que não tem retorno, e nessa é mandado um ````event```` que faz com que a página não se recarregue (para aplicações padrão ````single page````);
+
+    ````ts
+      export function throttle(milissegundos = 500) {
+          return function(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+              const metodoOriginal = descriptor.value;
+
+              let timer = 0;
+                  descriptor.value function(...args, any[]) {
+                      if (event) {
+                          event.preventDefault();
+                      }
+
+                      clearInterval(timer);
+
+                      timer = setTimeout(() => metodoOriginal.apply(this, args), milissegudos);
+                  }
+
+              return descriptor;
+          }
+      }
+    ````
+  
+  - ```Decorator de método``` Um decorator que executa algo antes e depois da chamada de um método:
+  Exemplo de um ```decorator``` que retorna o tempo demorado para executar uma função:
+    ````ts
+      export function tempoExecucao() {
+          return function(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+              const metodoOriginal = descriptor.value;
+              descriptor.value function(...args, any[]) {
+                  console.log("----------------------------------");
+                  console.log(`Parâmetros passados para o método ${propertyKey}: ${JSON.stringify(args)}`);
+
+                  const t1 = performance.now();
+                  const retorno = metodoOriginal.apply(this, args);
+                  const t2 = performance.now();
+
+                  console.log(`O retorno do método ${propertyKey} é ${JSON.stringify(retorno)}`);
+                  console.log(`O método ${propertyKey} demorou ${t2 - t1} ms  `);
+
+                  return retorno;
+              }
+
+              return descriptor;
+          }
+      }
+    ````
 
 # Programação Defensiva
 
 - ## Javascript | Typescript
 
-  - ```new Date()``` Precisa ter um cuidado com o Date pois se passado da forma errada para o usuário, tanto mostrando quanto requisitando, o usuário conseguirá    modificá-lo caso seja passado para ele uma referência do Date em questão, para criar uma programação defensiva para esse objeto, é necessário passar uma cópia do objeto, assim caso o usuário consiga editar essa Data, ele não estará alterando a data principal e sim a cópia, em javascript | typescript é feita assim:
+  - ````new Date()```` Precisa ter um cuidado com o Date pois se passado da forma errada para o usuário, tanto mostrando quanto requisitando, o usuário conseguirá    modificá-lo caso seja passado para ele uma referência do Date em questão, para criar uma programação defensiva para esse objeto, é necessário passar uma cópia do objeto, assim caso o usuário consiga editar essa Data, ele não estará alterando a data principal e sim a cópia, em javascript | typescript é feita assim:
     Quando requisitar uma data, envolvê la em um:
     ````js
       new Date(data recebida)
