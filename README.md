@@ -1,6 +1,6 @@
 # Javascript | Typescript
 
-````Decorator```` Um Decorator é um tipo especial de declaração que pode ser anexado a uma declaração de classe, método, acessador, propriedade ou parâmetro para os mais diversos fins. Como o de carregar um elemento do Doom apenas quando o usuario necessitar desse elemento, conhecido como ````Lazyload`````:
+````Decorator```` Um Decorator é um tipo especial de declaração que pode ser anexado a uma declaração de classe, método, acessador, propriedade ou parâmetro para os mais diversos fins. Como o de carregar um elemento do Doom apenas quando o usuario necessitar desse elemento, conhecido como ````Lazyload````:
 
   - ````Throttle```` Padrão de projeto que limita a quantidade de requisições realizadas, fazendo com que a cada vez que o usuário pressionar o botão, essa requisição demore meio segundo (ou outro tempo determinado) para ser enviada e caso o usuário pressione 2 vezes seguidas, a requisição reseta a contagem e começa a valer a partir da última vez que foi pressionada, assim faz com que o usuário não fique metralhando requisições;
 
