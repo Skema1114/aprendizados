@@ -33,9 +33,7 @@ Exemplo de ````decorator```` no padrão ````throttle```` que é feito para uma r
 <br>
 
 #### Decorator de método
-Um decorator que executa algo antes e depois da chamada de um método:
-
-Ele é chamado:
+Um decorator que executa algo antes e depois da chamada de um método. Forma de chamar:
   
 ````ts
   @tempoExecucao();
@@ -44,7 +42,7 @@ Ele é chamado:
   }
 ````
  
- Exemplo de um ```decorator``` que retorna o tempo demorado para executar uma função:
+Exemplo de um ```decorator``` que retorna o tempo demorado para executar uma função:
     
 ````ts
   export function tempoExecucao() {
@@ -73,9 +71,7 @@ Ele é chamado:
 <br>
 
 #### Decorator | Doom Inject
-Um decorator que verifica se o elemento ja foi buscado, se não foi ele busca e faz isso apenas uma vez quando o elemento é requisitado, conhecido como ```LazyLoad```:
-
-Ele é chamado:
+Um decorator que verifica se o elemento ja foi buscado, se não foi ele busca e faz isso apenas uma vez quando o elemento é requisitado, conhecido como ```LazyLoad```. Forma de chamar:
   
 ````ts
     @doomInject("#data");
@@ -107,9 +103,7 @@ Exemplo:
 <br>
 
 ## Barrels
-É possivel facilitar as importações no Javascript | Typescrypt com o padrão Barrel, onde neste você criará um arquivo index dentro de uma determinada pasta centralizando os arquivos contidos nela, ou seja, se na pasta ```models``` tem os modelos do ```usuario```, ```produto``` e ```regiao```.
-
-Normalmete é importado assim:
+É possivel facilitar as importações no Javascript | Typescrypt com o padrão Barrel, onde neste você criará um arquivo index dentro de uma determinada pasta centralizando os arquivos contidos nela, ou seja, se na pasta ```models``` tem os modelos do ```usuario```, ```produto``` e ```regiao```. Normalmete é importado assim:
 
 ```ts
     import { Usuario } from './models/usuario';
@@ -143,7 +137,9 @@ Quando requisitar uma data, envolvê la em um:
 ````js
     new Date(data recebida)
 ````
+
 No construtor quando recebe uma data, é necessário envolver essa data para garantir que o objeto ```Date``` recebido não venha já alterado;
+
 ````js
     new Date(data recebida pelo construtor)
 ````
